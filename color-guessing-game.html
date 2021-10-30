@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+</head>
+<body>
+    <h1>Color Guessing Game</h1>
+    <button onclick="runGame()">Start Game</button>
+    <script>
+    const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'
+]
+    function runGame(){
+        let guess = "";
+        let correct = false;
+        let numTries = 0;
+
+        const targetIndex = Math.floor(Math.random()* COLORS_ARRAY.length) 
+        const target = COLORS_ARRAY[targetIndex];
+        console.log(target)  
+      do { 
+          guess = prompt('I am thinking of one of these colors: \n\n' + COLORS_ARRAY.join(", ") + '\n\nWhat color am I thnking of?\n')
+        if (guess === null){
+            prompt("You have chosen to cancel the game.");
+            return ;
+        }
+        correct = checkGuess(guess,target);
+        numTries++;
+
+      } while (!correct);
+    
+    alert("Congrats!\n\n It took you " + numTries +" round to guess correctly.")
+    document.body.style.background = guess;
+    document.body.style.backgroundImage = "url('https://www.troublefreepool.com/media/thumbs-up-gif.3464/full')";
+    document.body.style.textAlign = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+    
+    //document.body.h1 = "text-align";
+   
+}
+
+    function checkGuess(guess,target){
+        let correct = false;
+
+        if(!COLORS_ARRAY.includes(guess)){
+            alert ("Try one of the colors listed above.");
+        } else if(guess > target) {
+            alert ("Too high!");
+        } else if(guess < target) {
+            alert ("Too low");
+        } else {
+            correct = true
+            return correct
+        }
+return correct
+    }
+
+    </script>
+</body>
+</html>

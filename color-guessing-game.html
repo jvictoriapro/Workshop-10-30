@@ -23,7 +23,7 @@
       do { 
           guess = prompt('I am thinking of one of these colors: \n\n' + COLORS_ARRAY.join(", ") + '\n\nWhat color am I thnking of?\n')
         if (guess === null){
-            prompt("You have chosen to cancel the game.");
+            alert("You have chosen to cancel the game.");
             return ;
         }
         correct = checkGuess(guess,target);
